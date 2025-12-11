@@ -54,6 +54,7 @@ class ThrustVectoring(Node):
 
         self.subscription = self.create_subscription(Twist, '/teleop/chassis_twist', self.callback, 10)
         self.thrust_publisher = self.create_publisher(Float32MultiArray, '/chassis_control/motor_outputs', 10)
+        self.m1_pub = self.create_publisher(Float32MultiArray, '/can/101', 10)
         self.twist_publisher = self.create_publisher(Twist, '/chassis_control/output_twist', 10)
 
     def callback(self, msg):
@@ -86,7 +87,7 @@ class ThrustVectoring(Node):
         out_thrusts = Float32MultiArray()
         out_thrusts.data = solutions.tolist()
         self.get_logger().info('out: "%s"' % str(out_thrusts))
-        self.thrust_publisher.publish(out_thrusts)
+        self.m1_pub.publish(out_thrusts.data[0])
 
         rA = list(map(sum, (solutions * coefficient_matrix).tolist()))
         self.get_logger().info('rA: "%s"' % str(rA))
