@@ -87,7 +87,9 @@ class ThrustVectoring(Node):
         out_thrusts = Float32MultiArray()
         out_thrusts.data = solutions.tolist()
         self.get_logger().info('out: "%s"' % str(out_thrusts))
-        self.m1_pub.publish(out_thrusts.data[0])
+        o0 = Float32()
+        o0.data = out_thrusts.data[0]
+        self.m1_pub.publish(o0)
 
         rA = list(map(sum, (solutions * coefficient_matrix).tolist()))
         self.get_logger().info('rA: "%s"' % str(rA))
