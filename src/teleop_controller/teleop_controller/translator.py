@@ -54,15 +54,15 @@ class Translator(Node):
         ):
             twist = Twist()
             twist.linear.x = self.controller_state["axes"][3] # right stick
-            twist.linear.y = self.controller_state["axes"][4] # right stick
-            twist.linear.z = self.controller_state["axes"][1] # left stick
+            twist.linear.y = -self.controller_state["axes"][4] # right stick
+            twist.linear.z = -self.controller_state["axes"][1] # left stick
             twist.angular.x = float(self.controller_state["dpad"][1]) # pitch
             twist.angular.y = float(self.controller_state["dpad"][0]) # roll
             yaw_r = self.controller_state["axes"][5] # right trigger
             yaw_l = self.controller_state["axes"][2] # left trigger
             yaw_r = (yaw_r + 1) / 2
             yaw_l = (yaw_l + 1) / 2 * (-1)
-            twist.angular.z = max(yaw_r, abs(yaw_l))
+            twist.angular.z = yaw_r + yaw_l
             self.publisher.publish(twist)
 
 
