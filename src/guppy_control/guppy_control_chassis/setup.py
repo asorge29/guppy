@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'chassis_control'
+package_name = 'guppy_control_chassis'
 
 setup(
     name=package_name,
@@ -24,8 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'thrust_vectoring = chassis_control.thrust_vectoring:main',
-            'sim_publisher = chassis_control.sim_publisher:main',
+            'thrust_vectoring = guppy_control_chassis.thrust_vectoring:main',
+            'sim_publisher = guppy_control_chassis.sim_publisher:main',
         ],
     },
 )

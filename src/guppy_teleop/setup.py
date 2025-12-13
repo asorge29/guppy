@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'teleop_controller'
+package_name = 'guppy_teleop'
 
 setup(
     name=package_name,
@@ -24,8 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'raw_controller = teleop_controller.raw_controller:main',
-            'translator = teleop_controller.translator:main',
+            'raw_controller = guppy_teleop.raw_controller:main',
+            'translator = guppy_teleop.translator:main',
         ],
     },
 )

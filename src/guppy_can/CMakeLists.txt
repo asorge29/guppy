@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(can_motor_control)
+project(guppy_can)
 
 # Default to C++17 for ROS2 Jazzy compatibility
 if(NOT CMAKE_CXX_STANDARD)
